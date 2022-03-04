@@ -166,3 +166,9 @@ variable "target_network_range" {
   description = "The ip address range that should be used for the network acl rules generated from the security groups"
   default     = "0.0.0.0/0"
 }
+
+variable "primary_network_interface_name" {
+  type        = string
+  description = "Primary network interface name"
+  default     = "eth0"
+}

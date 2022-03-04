@@ -154,6 +154,7 @@ resource ibm_is_instance vsi {
   primary_network_interface {
     subnet          = var.vpc_subnets[count.index].id
     security_groups = [local.base_security_group, ibm_is_security_group.vsi.id]
+    name            = var.primary_network_interface_name
   }
 
   boot_volume {
