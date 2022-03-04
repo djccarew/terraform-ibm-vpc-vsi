@@ -153,7 +153,7 @@ resource ibm_is_instance vsi {
 
   primary_network_interface {
     subnet          = var.vpc_subnets[count.index].id
-    security_groups = [local.base_security_group, ibm_is_security_group.vsi.id]
+    #security_groups = [local.base_security_group, ibm_is_security_group.vsi.id]
     name            = var.primary_network_interface_name
   }
 
@@ -175,14 +175,14 @@ resource ibm_is_floating_ip vsi {
   tags = var.tags
 }
 
-resource ibm_is_security_group_rule ssh_to_self_public_ip {
-  count = var.create_public_ip ? var.vpc_subnet_count : 0
+#resource ibm_is_security_group_rule ssh_to_self_public_ip {
+#  count = var.create_public_ip ? var.vpc_subnet_count : 0
 
-  group     = ibm_is_security_group.vsi.id
-  direction = "outbound"
-  remote    = ibm_is_floating_ip.vsi[count.index].address
-  tcp {
-    port_min = 22
-    port_max = 22
-  }
-}
+#  group     = ibm_is_security_group.vsi.id
+#  direction = "outbound"
+#  remote    = ibm_is_floating_ip.vsi[count.index].address
+#  tcp {
+#    port_min = 22
+#    port_max = 22
+#  }
+#}
